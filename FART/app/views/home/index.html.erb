@@ -1,0 +1,57 @@
+<%# app/views/home/index.html.erb %>
+
+<%= form_with url: submit_response_path, method: :post do |form| %>
+  <div class="container">
+    <h1>Welcome to the Finding AI Registry Test!</h1>
+    <div class="user-id-display">
+      <% if cookies[:user_id].present? %>
+        <% user_id = cookies[:user_id] %>
+        <%= link_to 'First, complete this Google Form.', "https://docs.google.com/forms/d/e/1FAIpQLScB4gcKZnaASimAOo3eDpiXBjvrL9acQ6KAQsV1iUoues2Xew/viewform?entry.1050041380=#{user_id}", target: '_blank' %>
+      <% end %>
+    </div>
+    <%# Display the images %>
+    <div class="row my-4">
+      <div class="col-mds-6">
+        <% if @selected_ai_image.present? %>
+          <h2>Image 1:</h2>
+          <%= image_tag @selected_ai_image, alt: "AI Image", class: "img-fluid" %>
+        <% end %>
+      </div>
+        <% if @selected_real_image.present? %>
+          <h2>Image 2:</h2>
+          <%= image_tag @selected_real_image, alt: "Real Image", class: "img-fluid" %>
+        <% end %>
+    </div>
+
+    <%# User selects their preferred image %>
+    <div class="image-selection">
+      <h2>Which Image is Your Favorite?</h2>
+      <div class="form-check">
+        <%= radio_button_tag 'response[image_preferred]', 'ai_image', false, class: 'form-check-input' %>
+        <%= label_tag 'response_image_preferred_ai_image', 'First Image', class: 'form-check-label' %>
+      </div>
+      <div class="form-check">
+        <%= radio_button_tag 'response[image_preferred]', 'real_image', false, class: 'form-check-input' %>
+        <%= label_tag 'response_image_preferred_real_image', 'Second Image', class: 'form-check-label' %>
+      </div>
+    </div>
+    <%# User identifies which image they think is AI-generated %>
+      <div class="ai-selection my-4">
+        <h2>Which Image do You Think is AI-Generated?</h2>
+        <div class="form-check">
+          <%= radio_button_tag 'response[image_identified_as_ai]', 'ai_image', false, class: 'form-check-input' %>
+          <%= label_tag 'response_image_identified_as_ai_ai_image', 'First Image', class: 'form-check-label' %>
+        </div>
+        <div class="form-check">
+          <%= radio_button_tag 'response[image_identified_as_ai]', 'real_image', false, class: 'form-check-input' %>
+          <%= label_tag 'response_image_identified_as_ai_real_image', 'Second Image', class: 'form-check-label' %>
+        </div>
+      </div>
+
+      <%# Hidden fields to store image URLs %>
+      <%= hidden_field_tag 'response[first_image_url]', @selected_ai_image %>
+      <%= hidden_field_tag 'response[second_image_url]', @selected_real_image %>
+    <%# Submit button %>
+    <%= form.submit "Submit Response", class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>
