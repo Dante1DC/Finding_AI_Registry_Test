@@ -5,7 +5,7 @@ This is a project for RAIK270H, that aids in collecting data.
 
 
 # Structure
-Uses Ruby on Rails for web application framework, SQLite3 for it's database, and Bootstrap for styling. 
+Uses Ruby on Rails for web application framework, SQLite3 for it's database, and Bootstrap for styling. This used to be hosted on Heroku, but the use case wasn't there anymore. As a result, the PostgreSQL stuff isn't in modern implementations of the app.
 ## Flow
 When you begin your first browser session with this tool, you're assigned a user_id, which is a unique identifier that follows you through refreshes. This cookie let's us associate your data with a Google Form linked in the application. The Google Form just tracks demographic information, and auto-fills with your cookie. 
 ## Controllers
@@ -29,11 +29,9 @@ This will show you all responses recorded, ever. If you want just responses for 
 
 User IDs are cookies that are logged per browser session. 
 
+# Analysis
+This GitHub also includes a folder called "Analysis" where you can analyze responses data. It uses Python's pandas to do so. You'll need Jupyter Notebook to use those files. Currently, there's no function to convert the mysqlite3 db to a csv, so the only analysis done in that document is for the Google Form responses. 
 # Future Development
 ## TODO: Add bulk image downloader
 https://github.com/felipeam86/imagedownloader
-## TODO: Improve UI for mobile
 ## TODO: Create sql -> csv function
-## TODO: Create admin panel?
-## TODO: Add hard-stop for 10 quizzes
-## TODO: Boolean logic on correctly_identified
