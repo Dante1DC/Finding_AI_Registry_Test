@@ -30,7 +30,7 @@ This will show you all responses recorded, ever. If you want just responses for 
 User IDs are cookies that are logged per browser session. 
 
 # Analysis
-This GitHub also includes a folder called "Analysis" where you can analyze responses data. It uses Python's pandas to do so. You'll need Jupyter Notebook to use those files. Currently, there's no function to convert the mysqlite3 db to a csv, so the only analysis done in that document is for the Google Form responses. 
+This GitHub also includes a folder called "Analysis" where you can analyze responses data. It uses Python's pandas to do so. You'll need Jupyter Notebook to use those files. Currently, there's no function to convert the mysqlite3 db to a csv, so the only analysis done in that document is for the Google Form responses. Further instructions are provided in the "analysis.ipynb" document.
 # Future Development
 ## TODO: Add bulk image downloader
 https://github.com/felipeam86/imagedownloader
